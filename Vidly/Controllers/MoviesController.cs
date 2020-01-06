@@ -42,12 +42,12 @@ namespace Vidly.Controllers
             //return RedirectToAction("Index", "Home", new { page = 1, sortBy = "name" });
         }
 
-        public ActionResult Edit(int Id)
+        public ActionResult Edit(int id)
         {
-            return Content("id = " + Id);
+            return Content("id = " + id);
         }
 
-        [Route("movies/released/{year:regex(\\d{4})}/{month:regex(\\d{2}):range(1, 12)}")]
+        [Route("movies/released/{year:regex(\\d{4})}/{month:regex(\\d{2}):range(1, 12)}")]  
         public ActionResult ByReleaseDate(int year, int month)
         {
             return Content(year + "/" + month);
