@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Http;
 using Vidly.Models;
 using Vidly.ViewModels;
 
@@ -33,8 +34,11 @@ namespace Vidly.Controllers
         // GET: Customer/CustomerDetails
         public ActionResult CustomerDetails(int id)
         {
-            //TODO: show "Not found"
-            return View(CustomersVm.Customers.FirstOrDefault(c => c.Id == id));
+            Customer model = CustomersVm.Customers.FirstOrDefault(c => c.Id == id);
+            if (model == null)
+                return HttpNotFound();
+
+            return View(model);
         }
     }
 }
