@@ -12,5 +12,16 @@
 }
 else
 {
-    <text>@Model.Name</text>
+    <ul>
+        <li>
+            <text>@Model.Name</text>
+        </li>
+
+        @if (Model.Birthdate != null)
+        {
+            <li>
+                <text>@Html.DisplayFor(model => model.Birthdate)</text>
+            </li>
+        }
+    </ul>
 }
