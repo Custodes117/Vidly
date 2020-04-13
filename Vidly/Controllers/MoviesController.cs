@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Vidly.EntityFramework;
 using Vidly.Models;
 using Vidly.ViewModels;
 
@@ -10,21 +11,17 @@ namespace Vidly.Controllers
 {
     public class MoviesController : Controller
     {
-
-        public MoviesViewModel MoviesVm { get; private set; }
+        private Context _context;
 
         public MoviesController()
         {
-            var movies = new List<Movie>()
-            {
-                new Movie { Name = "Shrek!", Id = 0 },
-                new Movie { Name = "another movie", Id = 1 },
-            };
+            _context = new Context();
+        }
 
-            MoviesVm = new MoviesViewModel()
-            {
-                Movies = movies
-            };
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+            base.Dispose(disposing);
         }
 
         // GET: Movies/Random
@@ -83,12 +80,12 @@ namespace Vidly.Controllers
                 sortBy = "Name";
             }
 
-            return View(MoviesVm); //Content(String.Format("pageIndex={0}&sortBy={1}", pageIndex, sortBy));
+            return View(_context.Movies.ToList()); //Content(String.Format("pageIndex={0}&sortBy={1}", pageIndex, sortBy));
         }
 
         public ActionResult MovieDetails(int id)
         {
-            var model = MoviesVm?.Movies?.FirstOrDefault(movie => movie.Id == id);
+            var model = _context.Movies.FirstOrDefault(movie => movie.Id == id);
 
             if (model == null)
                 return HttpNotFound();
