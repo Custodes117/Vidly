@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -85,7 +86,7 @@ namespace Vidly.Controllers
 
         public ActionResult MovieDetails(int id)
         {
-            var model = _context.Movies.FirstOrDefault(movie => movie.Id == id);
+            var model = _context.Movies.Include(m => m.Genre).ToList().FirstOrDefault(movie => movie.Id == id);
 
             if (model == null)
                 return HttpNotFound();

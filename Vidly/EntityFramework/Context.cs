@@ -16,5 +16,20 @@ namespace Vidly.EntityFramework
 
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Customer> Customers { get; set; }
+
+        public override int SaveChanges()
+        {
+            var entries = ChangeTracker
+                .Entries()
+                .Where(e => e.Entity is Movie && (
+                        e.State == EntityState.Added));
+
+            foreach (var entityEntry in entries)
+            {
+                    ((Movie)entityEntry.Entity).DateAdded = DateTime.Now;
+            }
+
+            return base.SaveChanges();
+        }
     }
 }
