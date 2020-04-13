@@ -196,6 +196,14 @@
     <Compile Include="Migrations\202004131454563_AddMovieContraints.designer.cs">
       <DependentUpon>202004131454563_AddMovieContraints.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004131531463_AddNameToMembershipType.cs" />
+    <Compile Include="Migrations\202004131531463_AddNameToMembershipType.designer.cs">
+      <DependentUpon>202004131531463_AddNameToMembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004131532507_PopulateMembershipType.cs" />
+    <Compile Include="Migrations\202004131532507_PopulateMembershipType.designer.cs">
+      <DependentUpon>202004131532507_PopulateMembershipType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\MembershipType.cs" />
@@ -284,6 +292,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004131454563_AddMovieContraints.resx">
       <DependentUpon>202004131454563_AddMovieContraints.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004131531463_AddNameToMembershipType.resx">
+      <DependentUpon>202004131531463_AddNameToMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004131532507_PopulateMembershipType.resx">
+      <DependentUpon>202004131532507_PopulateMembershipType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
